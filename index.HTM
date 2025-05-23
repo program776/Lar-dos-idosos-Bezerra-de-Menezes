@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lar dos Idosos Bezerra de Menezes</title>
+  <style>
+    /* reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+      line-height: 1.5;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: url('fundo.jpg') no-repeat center center fixed;
+      background-size: cover;
+      filter: brightness(0.85) contrast(1.1) saturate(0.9);
+      padding: 0; /* remove padding para nav ficar grudada no header */
+    }
+
+    header {
+      background: url('teste.webp') no-repeat center top;
+      background-size: cover;
+      padding: 60px 20px 40px;
+      text-align: center;
+      color: white;
+      box-shadow: none; /* remove sombra pra ficar integrado */
+      position: relative;
+      z-index: 10;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    }
+
+    .titulo-com-imagens {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .titulo-com-imagens h1 {
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      margin: 0;
+      text-align: center;
+      flex: 1 1 auto;
+      min-width: 200px;
+    }
+
+    .img-idoso {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    nav {
+      background: #b3d9ff;
+      padding: 12px 0;
+      box-shadow: none; /* sem sombra */
+      position: relative; /* não fixa */
+      z-index: 20;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      padding: 0 15px;
+      margin: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #004080;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: color 0.3s;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      color: #1a8cff;
+    }
+
+    main, section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 30px 30px 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      color: #222;
+    }
+
+    section h2 {
+      color: #4da6ff;
+      margin-bottom: 15px;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .mapa {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      border-radius: 8px;
+    }
+
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .galeria img {
+      width: 300px;
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .galeria img:hover {
+      transform: scale(1.05);
+    }
+
+    .lista-func {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .categoria h3 {
+      color: #007acc;
+      border-bottom: 1px solid #cce0ff;
+      margin-bottom: 8px;
+      font-size: 1.4rem;
+    }
+
+    ul {
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #004080;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      word-break: break-word;
+    }
+
+    a:hover {
+      color: #004080;
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #4da6ff;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 1rem;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
+    }
+
+    /* responsividade */
+
+    /* tablets e telas menores que 1024px */
+    @media (max-width: 1024px) {
+      .titulo-com-imagens {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .img-idoso {
+        width: 120px;
+        height: 120px;
+      }
+
+      .galeria img {
+        width: 90vw;
+        max-width: 90vw;
+      }
+
+      main, section {
+        margin: 40px 15px;
+        padding: 20px 15px 15px;
+      }
+
+      section h2 {
+        font-size: 1.8rem;
+      }
+
+      nav ul {
+        gap: 20px;
+      }
+    }
+
+    /* celulares e telas até 600px */
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+        padding: 0 10px;
+      }
+
+      nav a {
+        font-size: 1.1rem;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .img-idoso {
+        width: 80px;
+        height: 80px;
+      }
+
+      .galeria img {
+        width: 90%;
+      }
+
+      main, section {
+        margin: 40px 10px;
+        padding: 15px 10px 10px;
+      }
+
+      section h2 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+</head>
+<body>
+
+  <!-- cabeçalho principal com título e imagens dos idosos -->
+  <header>
+    <div class="titulo-com-imagens">
+      <img src="senhores.png" alt="Idoso 1" class="img-idoso" />
+      <h1>LAR DOS IDOSOS BEZERRA DE MENEZES</h1>
+      <img src="idosos.png" alt="Idoso 2" class="img-idoso" />
+    </div>
+    <p>Desde 1968, cuidando com amor, respeito e dignidade.</p>
+  </header>
+
+  <!-- menu de navegação com links para seções da página -->
+  <nav>
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#imagens">Imagens</a></li>
+      <li><a href="#equipe">Equipe</a></li>
+      <li><a href="#como-ajudar">Como Ajudar</a></li>
+      <li><a href="#eventos">Eventos</a></li>
+      <li><a href="#visita">Visita</a></li>
+      <li><a href="#voluntariado">Voluntariado</a></li>
+      <li><a href="#parcerias">Parcerias</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li><a href="#créditos">Créditos</a></li>
+      
+
+    </ul>
+  </nav>
+
+  <!-- seção sobre a instituição com texto e mapa embutido -->
+  <section id="sobre">
+    <h2>Sobre a Instituição</h2>
+    <p>O Lar dos Idosos Bezerra de Menezes é uma instituição privada localizada em Alagoinhas – BA, que desde 1968 oferece acolhimento e cuidado humanizado aos idosos. Fundada pela <a href="https://www.bahiaespirita.com.br/centros-espiritas/bahia-municipios/alagoinhas/uniao-espirita-alagoinhense.html"
+         target="_blank" rel="noopener noreferrer"
+         class="link-parceria">
+        UEA – União Espírita Alagoinhense
+      </a>,a instituição nasceu com o intuito de acolher idosos em situações de vulnerabilidade. Com base em princípios de solidariedade e respeito, o Lar oferece não apenas abrigo, mas um verdadeiro lar onde cada história é valorizada.</p>
+    <p><strong>Endereço:</strong> Rua Tupy Caldas, Bairro Santa Terezinha, Alagoinhas - BA</p>
+    <iframe class="mapa" src="https://www.google.com/maps?q=Rua+Tupy+Caldas,+Santa+Terezinha,+Alagoinhas+-+BA&output=embed"></iframe>
+  </section>
+
+  <!-- seção com galeria de imagens do local -->
+  <section id="imagens">
+    <h2>Imagens do Local</h2>
+    <div class="galeria">
+      <img src="frente.jpg" alt="Imagem do Lar" />
+      <img src="entrada.jpg" alt="Área externa" />
+      <img src="lado.jpg" alt="Atividades com os idosos" />
+    </div>
+  </section>
+
+  <!-- seção que lista os membros da equipe divididos por categorias -->
+  <section id="equipe">
+    <h2>Nossa Equipe</h2>
+    <div class="lista-func">
+      <div class="categoria">
+        <h3>Direção</h3>
+        <ul><li>Antônio de Santana – Diretor Geral</li></ul>
+      </div>
+      <div class="categoria">
+        <h3>Cuidadores</h3>
+        <ul><li>Márcio</li><li>Bispo</li><li>Galego</li><li>Andrea</li><li>Viviane</li></ul>
+      </div>
+      <div class="categoria">
+        <h3>Secretaria</h3>
+        <ul><li>Andriele</li><li>Bárbara</li><li>Flávia</li></ul>
+      </div>
+      <div class="categoria">
+        <h3>Enfermagem e Saúde</h3>
+        <ul><li>Kleberth</li><li>Carol</li><li>Larissa</li><li>Marta</li><li>Angelita</li></ul>
+      </div>
+      <div class="categoria">
+        <h3>Cozinha e Lavanderia</h3>
+        <ul><li>Cristina</li><li>Daniele</li><li>Dalira</li><li>Luana</li></ul>
+      </div>
+      <div class="categoria">
+        <h3>Serviços Gerais</h3>
+        <ul><li>Adjean</li><li>Andreia</li><li>Helena</li><li>Cloiver</li><li>Hugo</li><li>Lany</li><li>Rosana</li><li>Jamile</li><li>Marta</li><li>Jorge</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- seção que explica como ajudar a instituição com doações -->
+  <section id="como-ajudar">
+    <h2>Como Ajudar</h2>
+  <p>O Lar dos Idosos Bezerra de Menezes está realizando uma campanha permanente de arrecadação de fraldas geriátricas, roupas, alimentos não perecíveis, soros, gases esterelizadas  e medicamentos.</p>
+<p>Esses itens são essenciais para garantir o bem-estar, a saúde e a dignidade dos idosos que acolhemos com tanto carinho. Muitos deles contam com a nossa estrutura e, principalmente, com o apoio da comunidade para viver com conforto e respeito.</p>
+<p>Sua doação faz a diferença!</p>
+<p>Cada contribuição, por menor que pareça, ajuda a transformar o dia a dia de quem tanto já contribuiu com a vida,se você puder e quiser ajudar, entre em contato conosco ou traga sua doação até o nosso espaço,juntos, podemos espalhar amor, cuidado e solidariedade.</p>
+
+<p>Obrigado por fazer parte dessa corrente do bem!</p>
+  </section>
+
+<section id="eventos">
+  <h2>Eventos</h2>
+  <p>O único evento que ocorre anualmente é a tradicional festa de São João, realizada com a presença de uma banda contratada.  A celebração é aberta ao público, e os participantes podem contribuir, de forma opcional, com a doação de 1kg de alimento não perecível ou fraldas. Os itens arrecadados são destinados ao uso diário dos idosos acolhidos pela instituição, contribuindo diretamente para o bem-estar e manutenção do Lar.</p>
+  <p> Além disso, a instituição recebe com frequência visitas de universidades e conta com a participação de trabalhos voluntários, fortalecendo ainda mais os laços com a comunidade e promovendo ações solidárias e educativas.</p>
+</section>
+
+
+  <!-- seção com horários para visitação -->
+  <section id="visita">
+    <h2>Visitas</h2>
+    <p>Estamos abertos todos os dias, com dois horários especiais para melhor receber você e sua família:</p>
+<p>🕘 Manhã: das 9h às 10h30.</p>
+<p>🕒 Tarde: das 15h às 17h.</p>
+<p>Aproveite esse momento para estar junto, conversar com carinho e fortalecer os laços com quem você ama. Contamos com sua compreensão e colaboração para manter o ambiente tranquilo e respeitoso para todos.</p>
+<p>Como visitar: Pode entrar em contato pelo tel, e agendar uma visita, (priorizar ligações).</p>
+  </section>
+
+  <!-- seção sobre voluntariado, com informações para se envolver -->
+  <section id="voluntariado">
+    <h2>Voluntariado</h2>
+    <p>O trabalho voluntário é super bem-vindo por aqui! Se você tem interesse em fazer a diferença e contribuir com o seu tempo e habilidades, é só entrar em contato com a gente.</p>
+    <p>Após esse primeiro passo, você passará por uma entrevista simples, onde vamos te conhecer melhor e entender como podemos caminhar juntos nessa jornada. Toda ajuda é valiosa!</p>
+  </section>
+
+  <!-- seção sobre parcerias com link para site externo -->
+  <section id="parcerias">
+    <h2>Parcerias</h2>
+    <p>
+      O Lar dos Idosos Bezerra de Menezes, em parceria com a
+      <a href="https://www.bahiaespirita.com.br/centros-espiritas/bahia-municipios/alagoinhas/uniao-espirita-alagoinhense.html"
+         target="_blank" rel="noopener noreferrer"
+         class="link-parceria">
+        UEA – União Espírita Alagoinhense
+      </a>,
+      é um espaço dedicado a oferecer cuidado, amor e qualidade de vida àqueles que tanto já contribuíram com suas histórias. Fundado em 1968, o Lar acolhe idosos em situação de vulnerabilidade, proporcionando um ambiente seguro, acolhedor e repleto de dignidade. </p>
+      <p>A instituição promove o bem-estar físico, emocional e social dos residentes, por meio de uma equipe comprometida e ações que vão desde o atendimento humanizado até atividades recreativas, culturais e espirituais. Mais do que um abrigo, o Lar é um verdadeiro lar, onde cada idoso é respeitado, valorizado e tratado com carinho e atenção.</p>
+  </section>
+
+  <!-- seção de contato com telefone e CNPJ -->
+  <section id="contato">
+    <h2>Contato</h2>
+    <p><strong>Telefone:</strong> <a href="tel:(75) 9 9987-5795"target="_blank" rel="noopener noreferrer">(75) 9 9987-5795</a></p>
+    <p><strong>Whatsapp:</strong> <a href="tel:(75) 3422-1329"target="_blank" rel="noopener noreferrer">(75) 3422-1329</a></p>
+    <p><strong>CNPJ:</strong> <a href="https://www.gov.br/receitafederal/pt-br" target="_blank"> 13.939.099/0001-33
+</a>
+</p>
+     <p><strong>E-mail:</strong><a href="mailto:santanatransservice@gmail.com"> santanatransservice@gmail.com</a></p>
+  </section>
+<section id="créditos">
+
+  <h2>Créditos</h2>
+Este site foi feito por alunos do 1° semestre de sistemas de informação da faculdade <a href="https://fsssacramento.br"
+target="_blank" rel="noopener noreferrer" 
+class="link-parceria">
+F.SS.S 
+</a>.
+
+ <p>Nosso principal objetivo é divulgar e valorizar o projeto do Lar dos Idosos Bezerra de Menezes, oferecendo visibilidade e apoio a essa causa tão importante tudo isso de forma totalmente gratuita para a instituição beneficiada.</p>
+
+<p> Você encontrará todas as informações sobre esse projeto inspirador, que acolhe, cuida e transforma a vida de muitos idosos. Esperamos que este espaço contribua para aproximar a comunidade dessa iniciativa e incentivar mais pessoas a conhecerem, apoiarem e se envolverem com o Lar dos Idosos Bezerra de Menezes.</p>
+ </section>
+
+  <!-- rodapé da página com direitos reservados -->
+  <footer>
+    &copy; 2025 Lar dos Idosos Bezerra de Menezes. Todos os direitos reservados.
+  </footer>
+
+</body>
+</html>
